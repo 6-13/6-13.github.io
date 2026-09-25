@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SWF Archive Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+    <div class="app-shell">
+        <main id="library" class="main-content">
+            <section class="welcome-row">
+                <div>
+                    <p class="eyebrow">Game directory</p>
+                    <h1>SWF Archive</h1>
+                    <p class="lede">Classic browser games and preserved game files.</p>
+                </div>
+            </section>
+            <section class="toolbar" aria-label="Game filters">
+                <label class="search-box">
+                    <span aria-hidden="true">⌕</span>
+                    <input id="game-search" type="search" placeholder="Search the archive" autocomplete="off" />
+                </label>
+                <div class="filter-tabs" role="tablist" aria-label="Collection type">
+                    <button class="filter-tab selected" type="button" data-filter="all">All games</button>
+                    <button class="filter-tab" type="button" data-filter="html">HTML</button>
+                    <button class="filter-tab" type="button" data-filter="swf">SWF archive</button>
+                </div>
+            </section>
+            <section class="section-heading">
+                <h2>Games</h2>
+                <span class="game-count">11 entries</span>
+            </section>
+            <section class="game-grid" id="game-grid" aria-live="polite">
+                <article class="game-card" data-name="Interactive Buddy" data-type="swf">
+                    <img class="game-icon" src="images/swf-game-logo.svg" alt="">
+                    <span class="file-kind">SWF</span>
+                    <div class="directory-name"><h3>Interactive Buddy</h3><p>swf/interactive-buddy.swf</p></div>
+                    <a class="play-button" href="./play.html?game=swf%2Finteractive-buddy.swf&amp;name=Interactive%20Buddy" aria-label="Play Interactive Buddy" title="Play Interactive Buddy">↗</a>
+                </article>
+                <article class="game-card" data-name="Dice Wars" data-type="swf">
+                    <img class="game-icon" src="images/swf-game-logo.svg" alt="">
+                    <span class="file-kind">SWF</span>
+                    <div class="directory-name"><h3>Dice Wars</h3><p>swf/Dice Wars.swf</p></div>
+                    <a class="play-button" href="./play.html?game=swf%2FDice%20Wars.swf&amp;name=Dice%20Wars" aria-label="Play Dice Wars" title="Play Dice Wars">↗</a>
+                </article>
+                <article class="game-card" data-name="Driving" data-type="swf">
+                    <img class="game-icon" src="images/swf-game-logo.svg" alt="">
+                    <span class="file-kind">SWF</span>
+                    <div class="directory-name"><h3>Driving</h3><p>swf/Driving.swf</p></div>
+                    <a class="play-button" href="./play.html?game=swf%2FDriving.swf&amp;name=Driving" aria-label="Play Driving" title="Play Driving">↗</a>
+                </article>
+                <article class="game-card" data-name="Dadish" data-type="html">
+                    <img class="game-icon" src="images/dadish.jpg" alt="Dadish logo">
+                    <span class="file-kind html-kind">HTML</span>
+                    <div class="directory-name"><h3>Dadish</h3><p>html/dadish/index.html</p></div>
+                    <a class="play-button" href="./html/dadish/" aria-label="Open Dadish" title="Open Dadish">↗</a>
+                </article>
+                <article class="game-card" data-name="Flappy Bird" data-type="html">
+                    <img class="game-icon" src="images/flappybird.jfif" alt="Flappy Bird logo">
+                    <span class="file-kind html-kind">HTML</span>
+                    <div class="directory-name"><h3>Flappy Bird</h3><p>html/flappy-bird/index.html</p></div>
+                    <a class="play-button" href="./html/flappy-bird/" aria-label="Open Flappy Bird" title="Open Flappy Bird">↗</a>
+                </article>
+                <article class="game-card" data-name="2048" data-type="html">
+                    <img class="game-icon" src="images/2048.png" alt="2048 logo">
+                    <span class="file-kind html-kind">HTML</span>
+                    <div class="directory-name"><h3>2048</h3><p>html/2048/index.html</p></div>
+                    <a class="play-button" href="./html/2048/" aria-label="Open 2048" title="Open 2048">↗</a>
+                </article>
+                <article class="game-card" data-name="Hextris" data-type="html">
+                    <img class="game-icon" src="html/hextris/images/android.png" alt="Hextris logo">
+                    <span class="file-kind html-kind">HTML</span>
+                    <div class="directory-name"><h3>Hextris</h3><p>html/hextris/index.html</p></div>
+                    <a class="play-button" href="./html/hextris/" aria-label="Open Hextris" title="Open Hextris">↗</a>
+                </article>
+                <article class="game-card" data-name="Clumsy Bird" data-type="html">
+                    <img class="game-icon" src="images/ck.png" alt="Clumsy Bird logo">
+                    <span class="file-kind html-kind">HTML</span>
+                    <div class="directory-name"><h3>Clumsy Bird</h3><p>html/clumsy-bird/index.html</p></div>
+                    <a class="play-button" href="./html/clumsy-bird/" aria-label="Open Clumsy Bird" title="Open Clumsy Bird">↗</a>
+                </article>
+                <article class="game-card" data-name="Learn to Fly" data-type="html">
+                    <img class="game-icon" src="images/learn-to-fly-logo.svg" alt="Learn to Fly logo">
+                    <span class="file-kind html-kind">HTML</span>
+                    <div class="directory-name"><h3>Learn to Fly</h3><p>html/learn-to-fly/index.html</p></div>
+                    <a class="play-button" href="./html/learn-to-fly/" aria-label="Open Learn to Fly" title="Open Learn to Fly">↗</a>
+                </article>
+                <article class="game-card" data-name="Red Ball 4" data-type="html">
+                    <img class="game-icon" src="images/red-ball-4-logo.svg" alt="Red Ball 4 logo">
+                    <span class="file-kind html-kind">HTML</span>
+                    <div class="directory-name"><h3>Red Ball 4</h3><p>html/red-ball-4/index.html</p></div>
+                    <a class="play-button" href="./html/red-ball-4/" aria-label="Open Red Ball 4" title="Open Red Ball 4">↗</a>
+                </article>
+                <article class="game-card" data-name="The World's Hardest Game" data-type="html">
+                    <img class="game-icon" src="images/worlds-hardest-game-logo.svg" alt="The World's Hardest Game logo">
+                    <span class="file-kind html-kind">HTML</span>
+                    <div class="directory-name"><h3>The World's Hardest Game</h3><p>html/worlds-hardest-game/index.html</p></div>
+                    <a class="play-button" href="./html/worlds-hardest-game/" aria-label="Open The World's Hardest Game" title="Open The World's Hardest Game">↗</a>
+                </article>
+            </section>
+        </main>
+    </div>
+    <script src="js/archive.js"></script>
+</body>
+</html>
