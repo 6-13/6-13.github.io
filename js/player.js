@@ -39,7 +39,6 @@ document.title = `Play ${gameName}`;
 
 const logoPaths = {
 
-```
 // General games
 '2048': 'images/2048.png',
 
@@ -168,7 +167,6 @@ const logoPaths = {
 'pixel speedrun':
     'images/geometry-world.png',
 
-
 // High quality collection
 'gjallarhorn':
     'images/tag.png',
@@ -205,7 +203,7 @@ const logoPaths = {
 
 'unifrost':
     'images/giphy.gif'
-```
+
 
 };
 
@@ -248,7 +246,7 @@ console.error('Fullscreen error:', error);
 
 document.addEventListener('fullscreenchange', () => {
 
-```
+
 const isFullscreen =
     document.fullscreenElement === playerFrame;
 
@@ -263,7 +261,7 @@ fullscreenButton.title =
     isFullscreen
         ? 'Exit fullscreen'
         : 'Enter fullscreen';
-```
+
 
 });
 
@@ -290,18 +288,17 @@ const validSwfPath =
 
 if (!validSwfPath) {
 
-```
+
 playerHost.hidden = true;
 
 errorElement.textContent =
     'Invalid or missing SWF game path.';
 
 errorElement.hidden = false;
-```
 
 } else {
 
-```
+
 const ruffle =
     window.RufflePlayer &&
     window.RufflePlayer.newest();
@@ -356,6 +353,6 @@ if (!ruffle) {
         errorElement.hidden = false;
     }
 }
-```
+
 
 }
