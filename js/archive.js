@@ -7,7 +7,7 @@ let activeFilter = 'all';
 
 function updateGames() {
 
-```
+
 const query = search.value.trim().toLowerCase();
 
 let visibleCount = 0;
@@ -50,7 +50,7 @@ if (gameCount) {
     gameCount.textContent =
         `${visibleCount} ${label}`;
 }
-```
+
 
 }
 
@@ -62,7 +62,7 @@ search.addEventListener('input', updateGames);
 
 filters.forEach((filter) => {
 
-```
+
 filter.addEventListener('click', () => {
 
     activeFilter =
@@ -86,7 +86,7 @@ filter.addEventListener('click', () => {
 
     updateGames();
 });
-```
+
 
 });
 
@@ -94,7 +94,6 @@ filter.addEventListener('click', () => {
 
 document.addEventListener('keydown', (event) => {
 
-```
 if (
     event.key === '/' &&
     document.activeElement !== search &&
@@ -106,7 +105,7 @@ if (
 
     search.focus();
 }
-```
+
 
 });
 
