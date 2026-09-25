@@ -22,95 +22,39 @@ const playerFrame = document.querySelector('#player-frame');
 const fullscreenButton = document.querySelector('#fullscreen-button');
 
 const logoPaths = {
-    '2048': 'images/2048.png',
-    'angry birds': 'images/angrybirds2.png',
-    'angry birds 2': 'images/angrybirds2.png',
-    'baldi': 'images/baldis.png',
-    "baldi's basics": 'images/baldis.png',
-    'bad piggies': 'images/badpiggies.jfif',
-    'block blast': 'images/blockblast.png',
-    'btd5': 'images/bltd5.png',
-    'bloons td 5': 'images/bltd5.png',
-
-    'burrito bison': 'images/burritobisonOG.png',
-
-    'clumsy bird': 'images/ck.png',
-    'cookie clicker': 'images/giphy.gif',
-
-    'dadish': 'images/dadish.jpg',
-    'dadish 2': 'images/dadish2.png',
-    'dadish 3': 'images/dadish.jpg',
-
-    'drive mad': 'images/drivemad.png',
-    'driving wild': 'images/drivemad.png',
-
-    'eagle ride': 'images/eagleride.png',
-
-    'earn to die': 'images/earntodie.png',
-    'earn to die 2': 'images/earntodie2.png',
-
-    'flappy bird': 'images/flappybird.jfif',
-    'friday night funkin': 'images/fnf.png',
-    'fruit ninja': 'images/fruitninja.png',
-
-    'geometry dash meltdown': 'images/geometry-world.png',
-
-    'golf': 'images/golf.png',
-    'granny': 'images/granny.png',
-
-    'minecraft': 'images/mc.png',
-    'moto x3m': 'images/moto2.jpg',
-
-    'plants vs zombies': 'images/pvz.png',
-    'pvz': 'images/pvz.png',
-
-    'ragdoll archers': 'images/ragdoll archers.png',
-    'ragdoll hit': 'images/ragdoll hit.png',
-
-    'scary maze': 'images/scary.jpg',
-    'stickman hook': 'images/stickman.png',
-    'subway surfers': 'images/subway.png',
-    'temple run': 'images/temple.png',
-    'ultrakill': 'images/ultrakill.png',
-
-    'learn to fly': 'images/learn-to-fly-logo.svg',
-    'red ball 4': 'images/red-ball-4-logo.svg',
-    "the world's hardest game": 'images/worlds-hardest-game-logo.svg',
-
-    // SWF archive
     'age of war': 'images/ageofwarn.png',
+    'burrito bison': 'images/burritobisonOG.png',
     'maze evolution 3': 'images/MazeEvolution3.png',
     'my friend pedro': 'images/myfriendpedro.png',
     'submachine': 'images/submachine.png',
     'super soldier': 'images/supersoldier.png',
-
-    // HTML games
+    'bloons td 5': 'images/bltd5.png',
+    'dadish 3': 'images/dadish.jpg',
+    'driving wild': 'images/drivemad.png',
+    'eagle ride': 'images/eagleride.png',
+    'earn to die': 'images/earntodie.png',
+    'earn to die 2': 'images/earntodie2.png',
     'fnaf 4': 'images/fnaf4.png',
+    'golf': 'images/golf.png',
+    'huecorn': 'images/huecorn.png',
     'minesweeper': 'images/minesweeper.png',
     'monkey mart': 'images/monkeymart.png',
-
     "papa's bakeria": 'images/burrito.jpg',
     "papa's freezeria": 'images/burrito.jpg',
     "papa's pizzeria": 'images/burrito.jpg',
     "papa's taco mia": 'images/burrito.jpg',
-
     'pixel speedrun': 'images/pixelspeedrun.png',
-
-    // High-quality collection
-    'gjallarhorn': 'images/gjallarhorn.png',
-    'prismatic prey': 'images/prismaticprey.png',
-    'unifrost': 'images/unifrost.png',
-
-    'huecorn': 'images/huecorn.png',
     'poopicorn': 'images/poopicorn.png',
     'racing': 'images/racing.png',
     'rainbow': 'images/rainboom.png',
     'unicorn shooter': 'images/unicornshooter.png',
-    'wonderful unicorn': 'images/wonderfulunicorn.png'
+    'wonderful unicorn': 'images/wonderfulunicorn.png',
+    'gjallarhorn': 'images/gjallarhorn.png',
+    'prismatic prey': 'images/prismaticprey.png',
+    'unifrost': 'images/unifrost.png'
 };
 
 const DEFAULT_LOGO = 'images/swf-game-logo.svg';
-
 
 function showError(message) {
     if (playerHost) {
@@ -122,7 +66,6 @@ function showError(message) {
         errorElement.hidden = false;
     }
 }
-
 
 function setGameInfo() {
     if (nameElement) {
@@ -151,7 +94,6 @@ function setGameInfo() {
         { once: true }
     );
 }
-
 
 function setupFullscreen() {
     if (!fullscreenButton || !playerFrame) {
@@ -199,11 +141,9 @@ function setupFullscreen() {
     updateFullscreenState();
 }
 
-
 function isValidSwfPath(path) {
     return /^swf\/[^/]+\.swf$/i.test(path);
 }
-
 
 async function loadGame() {
     if (!playerHost) {
@@ -223,7 +163,6 @@ async function loadGame() {
         showError(
             'The Flash player could not be loaded. Check your connection and try again.'
         );
-
         return;
     }
 
@@ -236,7 +175,6 @@ async function loadGame() {
         playerHost.replaceChildren(player);
 
         await player.load(loadPath);
-
     } catch (error) {
         console.error(
             `Failed to load SWF: ${loadPath}`,
@@ -248,7 +186,6 @@ async function loadGame() {
         );
     }
 }
-
 
 setGameInfo();
 setupFullscreen();
