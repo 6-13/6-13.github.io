@@ -1,114 +1,89 @@
+
 const search = document.querySelector('#game-search');
-const cards = [...document.querySelectorAll('.game-card')];
-const filters = [...document.querySelectorAll('.filter-tab')];
+const cards = Array.from(document.querySelectorAll('.game-card'));
+const filters = Array.from(document.querySelectorAll('.filter-tab'));
 const gameCount = document.querySelector('#game-count');
 
 let activeFilter = 'all';
 
+const normalizedCards = cards.map((card) => ({
+    element: card,
+    name: (card.dataset.name || '').trim().toLowerCase(),
+    type: (card.dataset.type || '').trim().toLowerCase()
+}));
+
 function updateGames() {
+    const query = search?.value.trim().toLowerCase() || '';
+    let visibleCount = 0;
 
+    for (const { element, name, type } of normalizedCards) {
+        const visible =
+            (!query || name.includes(query)) &&
+            (activeFilter === 'all' || type === activeFilter);
 
-const query = search.value.trim().toLowerCase();
+        element.hidden = !visible;
 
-let visibleCount = 0;
-
-cards.forEach((card) => {
-
-    const name =
-        (card.dataset.name || '').toLowerCase();
-
-    const type =
-        card.dataset.type || '';
-
-    const matchesText =
-        name.includes(query);
-
-    const matchesType =
-        activeFilter === 'all' ||
-        type === activeFilter;
-
-    const visible =
-        matchesText && matchesType;
-
-    card.hidden = !visible;
-
-    if (visible) {
-        visibleCount++;
+        if (visible) {
+            visibleCount++;
+        }
     }
-});
 
-
-// Update the number shown above the grid.
-
-if (gameCount) {
-
-    const label =
-        visibleCount === 1
-            ? 'entry'
-            : 'entries';
-
-    gameCount.textContent =
-        `${visibleCount} ${label}`;
+    if (gameCount) {
+        gameCount.textContent =
+            `${visibleCount} ${visibleCount === 1 ? 'entry' : 'entries'}`;
+    }
 }
 
+function setActiveFilter(filter) {
+    const value = filter.dataset.filter?.trim().toLowerCase();
 
-}
+    if (!value) return;
 
-// Search
+    activeFilter = value;
 
-search.addEventListener('input', updateGames);
+    for (const item of filters) {
+        const selected = item === filter;
 
-// Filters
-
-filters.forEach((filter) => {
-
-
-filter.addEventListener('click', () => {
-
-    activeFilter =
-        filter.dataset.filter;
-
-    filters.forEach((item) => {
-
-        const selected =
-            item === filter;
-
-        item.classList.toggle(
-            'selected',
-            selected
-        );
-
-        item.setAttribute(
-            'aria-selected',
-            selected ? 'true' : 'false'
-        );
-    });
+        item.classList.toggle('selected', selected);
+        item.setAttribute('aria-selected', String(selected));
+    }
 
     updateGames();
-});
-
-
-});
-
-// Press "/" to focus search
-
-document.addEventListener('keydown', (event) => {
-
-if (
-    event.key === '/' &&
-    document.activeElement !== search &&
-    document.activeElement?.tagName !== 'INPUT' &&
-    document.activeElement?.tagName !== 'TEXTAREA'
-) {
-
-    event.preventDefault();
-
-    search.focus();
 }
 
+search?.addEventListener('input', updateGames);
 
+for (const filter of filters) {
+    filter.addEventListener('click', () => {
+        setActiveFilter(filter);
+    });
+}
+
+document.addEventListener('keydown', (event) => {
+    if (
+        event.key !== '/' ||
+        event.ctrlKey ||
+        event.metaKey ||
+        event.altKey ||
+        event.shiftKey
+    ) {
+        return;
+    }
+
+    const target = event.target;
+
+    if (
+        target instanceof HTMLInputElement ||
+        target instanceof HTMLTextAreaElement ||
+        target instanceof HTMLSelectElement ||
+        target?.isContentEditable
+    ) {
+        return;
+    }
+
+    event.preventDefault();
+    search?.focus();
 });
 
-// Initial count
-
 updateGames();
+
